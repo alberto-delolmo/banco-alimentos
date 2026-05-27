@@ -1,0 +1,22 @@
+# Symfony
+/backend/app/var/
+/backend/app/vendor/
+/backend/app/.env.local
+/backend/app/.env.*.local
+
+# Composer
+/backend/app/composer.phar
+
+# Docker / local data
+/backend/docker/data/
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
