@@ -1,0 +1,15 @@
+### List products
+GET http://localhost:8080/api/products
+Accept: application/json
+
+### Create product
+POST http://localhost:8080/api/products
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Arroz",
+  "description": "Paquete de arroz blanco",
+  "measurementUnit": "kg",
+  "actualStock": 100
+}
