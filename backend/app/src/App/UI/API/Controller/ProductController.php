@@ -9,6 +9,8 @@ use App\Core\Product\Domain\Exception\ProductNotFoundException;
 use App\Core\Product\Domain\Exception\ProductValidationException;
 use App\Entity\Product;
 use App\Repository\ProductRepository;
+use App\App\UI\API\Request\Product\CreateProductRequest;
+use App\App\UI\API\Request\Product\UpdateProductRequest;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
@@ -51,7 +53,7 @@ final class ProductController
         }
 
         try {
-            $product = $productService->create($payload);
+            $product = $productService->create(CreateProductRequest::fromArray($payload));
         } catch (ProductValidationException $exception) {
             return $this->validationErrorResponse($exception);
         } catch (ProductAlreadyExistsException $exception) {
@@ -77,7 +79,7 @@ final class ProductController
         }
 
         try {
-            $product = $productService->update($id, $payload);
+            $product = $productService->update($id, UpdateProductRequest::fromArray($payload));
         } catch (ProductValidationException $exception) {
             return $this->validationErrorResponse($exception);
         } catch (ProductNotFoundException $exception) {

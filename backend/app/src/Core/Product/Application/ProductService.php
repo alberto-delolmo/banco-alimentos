@@ -2,6 +2,8 @@
 
 namespace App\Core\Product\Application;
 
+use App\App\UI\API\Request\Product\CreateProductRequest;
+use App\App\UI\API\Request\Product\UpdateProductRequest;
 use App\Core\Product\Domain\Exception\ProductAlreadyExistsException;
 use App\Core\Product\Domain\Exception\ProductNotFoundException;
 use App\Core\Product\Domain\Exception\ProductValidationException;
@@ -19,14 +21,14 @@ final class ProductService
     ) {
     }
 
-    public function create(array $payload): Product
+    public function create(CreateProductRequest $request): Product
     {
         $product = new Product();
-        $product->setId($payload['id'] ?? '');
-        $product->setName($payload['name'] ?? '');
-        $product->setDescription($payload['description'] ?? null);
-        $product->setMeasurementUnit($payload['measurementUnit'] ?? '');
-        $product->setActualStock(isset($payload['actualStock']) ? (int) $payload['actualStock'] : null);
+        $product->setId($request->id);
+        $product->setName($request->name);
+        $product->setDescription($request->description);
+        $product->setMeasurementUnit($request->measurementUnit);
+        $product->setActualStock($request->actualStock);
 
         $this->validate($product);
 
@@ -40,14 +42,14 @@ final class ProductService
         return $product;
     }
 
-    public function update(string $id, array $payload): Product
+    public function update(string $id, UpdateProductRequest $request): Product
     {
         $product = $this->findProductOrFail($id);
 
-        $product->setName($payload['name'] ?? '');
-        $product->setDescription($payload['description'] ?? null);
-        $product->setMeasurementUnit($payload['measurementUnit'] ?? '');
-        $product->setActualStock(isset($payload['actualStock']) ? (int) $payload['actualStock'] : null);
+        $product->setName($request->name);
+        $product->setDescription($request->description);
+        $product->setMeasurementUnit($request->measurementUnit);
+        $product->setActualStock($request->actualStock);
 
         $this->validate($product);
 
