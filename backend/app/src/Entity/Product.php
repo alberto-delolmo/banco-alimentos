@@ -13,21 +13,21 @@ class Product
     #[ORM\Id]
     #[ORM\Column(type: Types::GUID, unique: true)]
     #[Assert\NotBlank(message: 'El id del producto es obligatorio.')]
-    #[Assert\Uuid(message: 'El id del producto debe de tener formato UUID.')]
+    #[Assert\Uuid(message: 'El id del producto debe tener formato UUID.')]
     private ?string $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\notBlank(message: 'El nombre del producto es obligatorio.')]
-    #[Assert\Length(max: 255, maxMessage: "El nombre del producto no puede tener más de 255 carácteres.")]
+    #[Assert\NotBlank(message: 'El nombre del producto es obligatorio.')]
+    #[Assert\Length(max: 255, maxMessage: 'El nombre del producto no puede tener más de 255 caracteres.')]
     private ?string $name = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
-    #[Assert\Length(max: 1000, maxMessage: "La descripción del producto no puede tener más de 1000 carácteres.")]
+    #[Assert\Length(max: 1000, maxMessage: 'La descripción del producto no puede tener más de 1000 caracteres.')]
     private ?string $description = null;
 
     #[ORM\Column(length: 50)]
-    #[Assert\notBlank(message: 'La unidad de medida del producto es obligatoria.')]
-    #[Assert\Length(max: 255, maxMessage: "La unidad de medida del producto no puede tener más de 50 carácteres.")]
+    #[Assert\NotBlank(message: 'La unidad de medida del producto es obligatoria.')]
+    #[Assert\Length(max: 50, maxMessage: 'La unidad de medida del producto no puede tener más de 50 caracteres.')]
     private ?string $measurementUnit = null;
 
     #[ORM\Column]

@@ -2,6 +2,7 @@
 GET http://localhost:8080/api/products
 Accept: application/json
 
+
 ### Create product
 POST http://localhost:8080/api/products
 Content-Type: application/json
@@ -15,15 +16,30 @@ Accept: application/json
   "actualStock": 100
 }
 
-### Creae product with invalid UUID
-POST http://localhost:8080/api/products
+
+### Show product
+GET http://localhost:8080/api/products/550e8400-e29b-41d4-a716-446655440000
+Accept: application/json
+
+
+### Update full product with PUT
+PUT http://localhost:8080/api/products/550e8400-e29b-41d4-a716-446655440000
 Content-Type: application/json
 Accept: application/json
 
 {
-  "id": "550e",
-  "name": "Arroz",
-  "description": "Paquete de arroz blanco",
+  "name": "Arroz integral",
+  "description": "Paquete de arroz integral de 1 kg",
   "measurementUnit": "kg",
-  "actualStock": 100
+  "actualStock": 80
 }
+
+
+### Delete product
+DELETE http://localhost:8080/api/products/550e8400-e29b-41d4-a716-446655440000
+Accept: application/json
+
+
+### Show deleted product
+GET http://localhost:8080/api/products/550e8400-e29b-41d4-a716-446655440000
+Accept: application/json
