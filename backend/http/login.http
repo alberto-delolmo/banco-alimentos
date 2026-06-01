@@ -1,0 +1,75 @@
+### Login user
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+Accept: application/json
+
+{
+  "email": "admin@bancoalimentos.local",
+  "password": "admin1234"
+}
+
+### Get token from login
+# Copia el token de la respuesta anterior y reemplázalo aquí
+# Authorization: Bearer <TOKEN>
+
+### Get current user info
+GET http://localhost:8080/api/auth/me
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3ODAwNTk1MDcsImV4cCI6MTc4MDA2MzEwNywicm9sZXMiOlsiUk9MRV9BRE1JTiJdLCJpZCI6IjU1MGU4NDAwLWUyOWItNDFkNC1hNzE2LTQ0NjY1NTQ0MDAwMSJ9.CycBg4xlIg4rZM1_mNDk_GuyKzttTtphd4MhFH1s8rMDqOABFYd7qgskaZFHl7RwfYNN6uKy6BabCAHjBGe90Ugif_cwzpuUrym1HtkWM3UvxsE4efiWF8rOFxi-CorH7HIdGo3F2FkDCjPRFwHxhlSeAM01nAUKQS5X_MvmQjSHRgS2fqr0Q_n_hI_i2sUrvv4wVC_0ByBreDaWnQ-8aUpB59BKJ1FC7zFkt55U2IYeeEbPS9bcE1av_2RUuPS5k-12JWZHv8-ebzA0eU5DqNSxWh2gQ9FJtgywdV9zipbBAn5Sw5Q-4dY36rcri1V-vY0tO_JrcUVRrAsiatmacA
+
+### List products (requires JWT)
+GET http://localhost:8080/api/products
+Accept: application/json
+Authorization: Bearer <TOKEN>
+
+### Create product (requires JWT)
+POST http://localhost:8080/api/products
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer <TOKEN>
+
+{
+  "id": "550e8400-e29b-41d4-a716-446655440000",
+  "name": "Arroz",
+  "description": "Paquete de arroz blanco",
+  "measurementUnit": "kg",
+  "actualStock": 100
+}
+
+### Show product by id (requires JWT)
+GET http://localhost:8080/api/products/550e8400-e29b-41d4-a716-446655440000
+Accept: application/json
+Authorization: Bearer <TOKEN>
+
+### Update product full with PUT (requires JWT)
+PUT http://localhost:8080/api/products/550e8400-e29b-41d4-a716-446655440000
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer <TOKEN>
+
+{
+  "name": "Arroz integral",
+  "description": "Paquete de arroz integral de 1 kg",
+  "measurementUnit": "kg",
+  "actualStock": 80
+}
+
+### Partial update product with PATCH (requires JWT)
+PATCH http://localhost:8080/api/products/550e8400-e29b-41d4-a716-446655440000
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer <TOKEN>
+
+{
+  "actualStock": 65
+}
+
+### Delete product (requires JWT)
+DELETE http://localhost:8080/api/products/550e8400-e29b-41d4-a716-446655440000
+Accept: application/json
+Authorization: Bearer <TOKEN>
+
+### Show deleted product (requires JWT)
+GET http://localhost:8080/api/products/550e8400-e29b-41d4-a716-446655440000
+Accept: application/json
+Authorization: Bearer <TOKEN>
